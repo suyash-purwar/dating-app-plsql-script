@@ -1,5 +1,5 @@
 -- AUTO_INCREMENT is not supported in Oracle 11g.
--- Triggers will be used to automatically allocate the unique id to every User
+-- Triggers will be used to automatically allocate the unique id to every User, Swipe, and Report Table Record
 CREATE TABLE Users (
 	id INT,
 	first_name VARCHAR(255) NOT NULL,
@@ -16,9 +16,9 @@ CREATE TABLE Users (
 CREATE TABLE UserInfo (
     id INT PRIMARY KEY,
     birthday DATE NOT NULL,
-    gender VARCHAR(255) NOT NULL CHECK(gender in ('MALE', 'FEMALE', 'OTHER')),
+    gender VARCHAR(255) NOT NULL CHECK(gender in ('MEN', 'WOMEN', 'OTHER')),
     sexual_orientation VARCHAR(255) NOT NULL,
-    show_profile_type VARCHAR(255) NOT NULL CHECK(show_profile_type in ('MALE', 'FEMALE', 'EVERYONE')),
+    show_profile_type VARCHAR(255) NOT NULL CHECK(show_profile_type in ('MEN', 'WOMEN', 'EVERYONE')),
     age INT NOT NULL CHECK(age >= 18),
     location_latitude FLOAT NOT NULL,
     location_longitude FLOAT NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE Swipes (
     swiped_to INT NOT NULL,
     swipe_type VARCHAR(255) NOT NULL CHECK(swipe_type in ('LIKE', 'SUPERLIKE')),
     is_accepted INT DEFAULT 0,
-    is_blocked int DEFAULT 0,
+    is_blocked INT DEFAULT 0,
     swiped_on DATE NOT NULL,
     blocked_on DATE,
     PRIMARY KEY(id),
@@ -50,7 +50,7 @@ CREATE TABLE Reports (
     report_date DATE NOT NULL,
     is_resolved INT DEFAULT 0,
     resolved_by VARCHAR(255),
-    resolve_on DATE,
+    resolved_on DATE,
     resolve_remark VARCHAR(255),
     PRIMARY KEY(id),
     FOREIGN KEY(reporter_id) REFERENCES Users(id),
