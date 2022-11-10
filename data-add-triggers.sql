@@ -19,5 +19,17 @@ FOR EACH ROW
 BEGIN
 SELECT swipe_id_seq.nextval
 INTO :new.id
-FROM dual
+FROM dual;
+END;
+
+-- Responsible for automatically allocating id number to the Swipe
+CREATE SEQUENCE report_id_seq;
+
+CREATE TRIGGER assign_report_id
+BEFORE INSERT ON Reports
+FOR EACH ROW
+BEGIN
+SELECT report_id_seq.nextval
+INTO :new.id
+FROM dual;
 END;

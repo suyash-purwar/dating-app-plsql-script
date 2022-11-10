@@ -45,14 +45,14 @@ CREATE TABLE Swipes (
 CREATE TABLE Reports (
     id INT,
     reporter_id INT NOT NULL,
-    reported INT NOT NULL,
+    reported_to INT NOT NULL,
     remarks VARCHAR(255) NOT NULL,
     report_date DATE NOT NULL,
     is_resolved INT DEFAULT 0,
     resolved_by VARCHAR(255),
-    resolve_date DATE,
+    resolve_on DATE,
     resolve_remark VARCHAR(255),
     PRIMARY KEY(id),
     FOREIGN KEY(reporter_id) REFERENCES Users(id),
-    FOREIGN KEY(reported) REFERENCES Users(id)
+    FOREIGN KEY(reported_to) REFERENCES Users(id)
 );
