@@ -1,0 +1,2 @@
+INSERT INTO Users (first_name, middle_name, last_name, phone, email_id, access_token, refresh_token, otp, otp_exp_time) VALUES ('Shubham', 'Sandeep', 'Purwar', '+919058765425', 'suyashpurwar4035@gmail.com', 'rcty87y4b38yr32r3i47rr34!2@', 'qy347yc7ybycqiue@3xnbc2*9', 932394, to_date('2002-11-06 22:34:20', 'YYYY-MM-DD HH24:MI:SS'));
+-- SELECT id, first_name, middle_name, last_name, phone, email_id, access_token, refresh_token, otp, to_char(otp_exp_time, 'yyyy-mm-dd hh24:mm:ss') as otp_exp_time FROM Users;
